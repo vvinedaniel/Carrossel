@@ -152,10 +152,8 @@ export const site = (x, y, w, h, opts = {}) => {
     const ch = (h - cy - 16 * scale - gap * (n - 1)) / n;
     sections.forEach((s, i) => {
       const yy = cy + i * (ch + gap);
-      content += rect(16 * scale, yy, w - 32 * scale, ch, i % 2 ? "url(#ht)" : PAPER2, 3, 5);
-      content += `<rect x="${16 * scale}" y="${yy}" width="${w - 32 * scale}" height="${ch}" fill="${PAPER2}" opacity="${i % 2 ? .0 : 1}"/>`;
-      if (i % 2) content += `<rect x="${16 * scale + 3}" y="${yy + 3}" width="${w - 32 * scale - 6}" height="${ch - 6}" fill="${PAPER2}"/>` + `<rect x="${16 * scale + 3}" y="${yy + 3}" width="${w - 32 * scale - 6}" height="${ch - 6}" fill="url(#ht)" opacity=".35"/>`;
-      content += text(w / 2, yy + ch / 2 + 11 * scale, s, 28 * scale, { ls: ".12em" });
+      content += rect(16 * scale, yy, w - 32 * scale, ch, i % 2 ? ACC : PAPER2, 3, 5);
+      content += text(w / 2, yy + ch / 2 + 12 * scale, s, 32 * scale, { ls: ".12em", fill: i % 2 ? PAPER2 : ACC });
     });
   } else {
     // blocos de conteúdo genéricos

@@ -36,8 +36,8 @@ const p01 = page({
       ${sign(230, 1046, "CONTATO", 6, 30, ACC, PAPER2)}
       ${spark(150, 720, 22)} ${spark(940, 780, 18)} ${spark(560, 560, 16, OR)} ${spark(120, 900, 12)}
     `)}
-    ${txt("SEU PERFIL APRESENTA.<br>O SITE EXPLICA.", { top: 1100, size: 34, style: "font-weight:700;letter-spacing:.06em" })}
-    ${cta("ARRASTE PARA ENTENDER →", { top: 1184 })}
+    ${txt("SEU PERFIL APRESENTA.<br>O SITE EXPLICA.", { top: 1090, size: 39, style: "font-weight:800;letter-spacing:.06em" })}
+    ${cta("ARRASTE PARA ENTENDER →", { top: 1188 })}
   `,
 });
 
@@ -49,16 +49,16 @@ const p02 = page({
   kicker: K("ATO 1 · A TRÉGUA"),
   body: `
     ${hl([{ t: "SEU PERFIL", size: 150 }, { t: "FAZ BEM O QUE", size: 118 }, { t: "FOI FEITO PRA FAZER.", size: 92, cls: "or" }], { top: 122, size: 150 })}
-    ${txt("Ele mostra seu trabalho, em ordem de data,<br>para quem já chegou até você.", { top: 492, size: 32, cls: "serifish" })}
+    ${txt("Ele mostra seu trabalho, em ordem de data,<br>para quem já chegou até você.", { top: 490, size: 34, cls: "serifish", style: "font-weight:600" })}
     ${svg(`
       ${burst(470, 810, 205, 256, 16, OR, 7, 8)}
       ${emph(470, 810, 280, 335, [195, 210, 225], 6)}
       ${phone(335, 592, 275, 440, { rot: -4 })}
-      ${sign(172, 632, "PUBLICAÇÕES", -8, 28, PAPER2)}
-      ${sign(150, 748, "PORTFÓLIO", 5, 28, ACC, PAPER2)}
-      ${sign(178, 866, "BASTIDORES", -6, 28, PAPER2)}
-      ${sign(790, 626, "CONTEÚDO", 7, 28, ACC, PAPER2)}
-      ${sign(822, 722, "INTERAÇÃO", -6, 28, PAPER2)}
+      ${sign(168, 632, "PUBLICAÇÕES", -6, 28, PAPER2)}
+      ${sign(160, 748, "PORTFÓLIO", 4, 28, ACC, PAPER2)}
+      ${sign(168, 864, "BASTIDORES", -6, 28, PAPER2)}
+      ${sign(806, 626, "CONTEÚDO", 6, 28, ACC, PAPER2)}
+      ${sign(816, 722, "INTERAÇÃO", -5, 28, PAPER2)}
       ${site(690, 782, 250, 225, { rot: 6, scale: 0.72, url: "seusite.com.br" })}
       ${spark(690, 600, 16, OR)} ${spark(140, 960, 16)} ${spark(965, 890, 14)}
     `)}
@@ -70,18 +70,18 @@ const p02 = page({
 // ------------------------------------------------------------
 // PÁGINAS 03–06 — SISTEMA DE COMPARAÇÃO
 // ------------------------------------------------------------
-const compare = ({ n, kicker, num, headline, hsize, bandText, hoje, comSite, capHoje, capSite, final, extra = "", vsY = 680 }) => page({
+const compare = ({ n, kicker, num, headline, hsize, hstyle = "", bandText, hoje, comSite, capHoje, capSite, final, extra = "", vsY = 680 }) => page({
   n,
   kicker,
   body: `
     ${svg(badge(90, 90, 64, num, 90), 190, 190, 30, 78, "", 11)}
-    ${hl(headline, { top: 128, size: hsize })}
+    ${hl(headline, { top: 128, size: hsize, style: hstyle })}
     ${band(bandText, { top: 396, size: 38 })}
     <div class="cmp" style="top:522px">
       <div class="panel hoje"><span class="tab">Hoje</span>${svg(hoje, 418, 330, 0, 0, "inline")}<div class="cap">${capHoje}</div></div>
       <div class="panel site"><span class="tab">Com site</span>${svg(comSite, 418, 330, 0, 0, "inline")}<div class="cap">${capSite}</div></div>
     </div>
-    ${svg(arrow(0, 40, 120, 0, 34), 140, 80, 470, vsY, "", 14)}
+    ${svg(arrow(0, 44, 134, 0, 40), 160, 88, 462, vsY - 4, "", 14)}
     ${final}
     ${extra}
   `,
@@ -154,6 +154,7 @@ const p05 = compare({
   num: "3",
   headline: ["O SITE ENTRA", { t: "NO JOGO DA BUSCA.", cls: "or" }],
   hsize: 106,
+  hstyle: "line-height:1.08",
   bandText: "MAIS UMA PORTA PARA SER ENCONTRADO.",
   hoje: `
     ${phone(190, 26, 150, 262, { rot: 6, feed: false, question: true })}
@@ -170,16 +171,15 @@ const p05 = compare({
       const y = 112 + i * 70, hi = i === 1;
       return shadowRect(24, y, 370, 56, hi ? PAPER2 : PAPER2, 4, hi ? 6 : 4, 6, 6) +
         (hi ? rect(24, y, 370, 56, "none", 4, 6) : "") +
-        rect(38, y + 12, 32, 32, hi ? OR : "url(#ht)", 3, 4) +
+        rect(38, y + 12, 32, 32, hi ? OR : PAPER2, 3, 4) +
         (hi ? text(84, y + 36, "suaempresa.com.br", 22, { anchor: "start", family: "Barlow Condensed", weight: 800, ls: "0" })
             : tlines(84, y + 22, 260, 2, 16, 6, INK, [1, 0.6]));
     }).join("")}
-    ${spark(400, 300, 12, OR)}
   `,
-  capHoje: "Quem ainda não conhece sua empresa<br>precisa chegar até você<br>por outros caminhos.",
+  capHoje: "Quem ainda não conhece<br>sua empresa precisa chegar<br>até você por outros caminhos.",
   capSite: "Páginas do seu site podem ser<br>rastreadas e indexadas<br>pelos buscadores.",
-  final: band("TER SITE NÃO GARANTE POSIÇÃO.", { top: 1024, cls: "center ink flat", size: 40 }) +
-    txt("Ele cria páginas que <i>podem</i> participar da busca.", { top: 1118, size: 30, cls: "serifish" }),
+  final: band("TER SITE NÃO GARANTE POSIÇÃO.", { top: 1040, cls: "center ink flat", size: 40 }) +
+    txt("Ele cria páginas que <i>podem</i> participar da busca.", { top: 1132, size: 32, cls: "serifish", style: `font-weight:600;color:${DEEP}` }),
   extra: svg(magnifier(96, 96, 72, 32), 230, 230, 776, 596, "", 15),
 });
 
@@ -192,10 +192,10 @@ const p06 = compare({
   hsize: 128,
   bandText: "PARE DE EXPLICAR TUDO DO ZERO.",
   hoje: `
-    ${bubble(22, 34, 270, 50, "“Qual o horário?”", { side: "left", size: 24, rot: -1 })}
-    ${bubble(120, 104, 280, 50, "“Onde vocês atendem?”", { side: "right", size: 24, rot: 1, fill: ACC, color: PAPER2 })}
-    ${bubble(22, 174, 290, 50, "“Quais serviços fazem?”", { side: "left", size: 24, rot: -1 })}
-    ${bubble(140, 244, 258, 50, "“Como funciona?”", { side: "right", size: 24, rot: 1, fill: ACC, color: PAPER2 })}
+    ${bubble(22, 34, 270, 50, "“Qual o horário?”", { side: "left", size: 26, rot: -1 })}
+    ${bubble(120, 104, 280, 50, "“Onde vocês atendem?”", { side: "right", size: 26, rot: 1, fill: ACC, color: PAPER2 })}
+    ${bubble(22, 174, 290, 50, "“Quais serviços fazem?”", { side: "left", size: 26, rot: -1 })}
+    ${bubble(140, 244, 258, 50, "“Como funciona?”", { side: "right", size: 26, rot: 1, fill: ACC, color: PAPER2 })}
   `,
   comSite: `
     ${addressBar(30, 14, 360, 54, "suaempresa.com.br", 26)}
@@ -211,11 +211,11 @@ const p06 = compare({
 // PÁGINA 07 — NÃO ACREDITE EM MIM
 // ------------------------------------------------------------
 const testRow = (y, n, label, body, icon) => `
-  <div class="test" style="position:absolute;left:84px;right:96px;top:${y}px;height:170px;z-index:10">
-    ${svg(badge(60, 84, 46, n, 64), 130, 170, 0, 0)}
-    <div style="position:absolute;left:130px;top:14px;width:520px">
-      <div style="display:inline-block;background:${OR};color:${PAPER2};font-family:Oswald;font-weight:700;font-size:26px;letter-spacing:.14em;padding:2px 14px 3px;border:4px solid ${INK};box-shadow:5px 5px 0 ${INK};transform:rotate(-1.5deg)">${label}</div>
-      <div style="font-family:'Barlow Condensed';font-weight:600;font-size:27px;line-height:1.1;margin-top:10px">${body}</div>
+  <div class="test" style="position:absolute;left:84px;right:96px;top:${y}px;height:184px;z-index:10">
+    ${svg(badge(64, 92, 56, n, 80), 140, 184, 0, 0)}
+    <div style="position:absolute;left:146px;top:16px;width:520px">
+      <div style="display:inline-block;background:${OR};color:${PAPER2};font-family:Oswald;font-weight:700;font-size:27px;letter-spacing:.14em;padding:3px 16px 4px;border:4px solid ${INK};box-shadow:5px 5px 0 ${INK};transform:rotate(-1.5deg)">${label}</div>
+      <div style="font-family:'Barlow Condensed';font-weight:600;font-size:30px;line-height:1.1;margin-top:12px;color:${DEEP}">${body}</div>
     </div>
     ${icon}
   </div>`;
@@ -224,20 +224,20 @@ const p07 = page({
   n: 7,
   kicker: K("ATO 3 · O TESTE"),
   body: `
-    ${hl(["NÃO ACREDITE", "EM MIM.", { t: "TESTE.", cls: "or" }], { top: 124, size: 96 })}
-    ${band("3 TESTES. 30 SEGUNDOS.", { top: 418, size: 38 })}
-    <div style="position:absolute;left:84px;right:96px;top:684px;height:3px;background:${INK};z-index:9"></div>
-    <div style="position:absolute;left:84px;right:96px;top:874px;height:3px;background:${INK};z-index:9"></div>
-    ${testRow(500, "1", "PESQUISE:",
-      `<span class="hi" style="font-weight:800;font-size:29px;padding:0 8px;background:${ACC};color:${PAPER2}">seu serviço + sua cidade</span><br><span style="display:inline-block;margin-top:6px">É fácil encontrar e entender sua empresa?</span>`,
-      svg(`${searchBox(14, 50, 258, 58, "serviço + cidade", 23)}${spark(286, 40, 12, OR)}${spark(24, 128, 9)}`, 300, 170, 600, 0))}
-    ${testRow(690, "2", "PEÇA PARA ALGUÉM ENCONTRAR:",
-      `sua região · seu horário · seus serviços<br><span style="font-weight:800;font-size:30px;letter-spacing:.04em;display:inline-block;margin-top:6px">EM 30 SEGUNDOS.</span>`,
-      svg(stopwatch(190, 96, 62, { fraction: 0.5, label: "30s" }), 300, 170, 600, 0))}
-    ${testRow(880, "3", "CONTE:",
+    ${hl(["NÃO ACREDITE", "EM MIM.", { t: "TESTE.", cls: "or" }], { top: 118, size: 90 })}
+    ${band("3 TESTES. 30 SEGUNDOS.", { top: 392, size: 38 })}
+    <div style="position:absolute;left:84px;right:96px;top:664px;height:3px;background:${INK};z-index:9"></div>
+    <div style="position:absolute;left:84px;right:96px;top:862px;height:3px;background:${INK};z-index:9"></div>
+    ${testRow(474, "1", "PESQUISE:",
+      `<span class="hi" style="font-weight:800;font-size:31px;padding:0 8px;background:${ACC};color:${PAPER2}">seu serviço + sua cidade</span><br><span style="display:inline-block;margin-top:8px">É fácil encontrar e entender sua empresa?</span>`,
+      svg(`${searchBox(14, 56, 258, 58, "serviço + cidade", 23)}${spark(286, 46, 12, OR)}${spark(24, 134, 9)}`, 300, 184, 600, 0))}
+    ${testRow(672, "2", "PEÇA PARA ALGUÉM ENCONTRAR:",
+      `sua região · seu horário · seus serviços<br><span style="font-weight:800;font-size:32px;letter-spacing:.04em;display:inline-block;margin-top:8px">EM 30 SEGUNDOS.</span>`,
+      svg(stopwatch(190, 102, 62, { fraction: 0.5, label: "30s" }), 300, 184, 600, 0))}
+    ${testRow(870, "3", "CONTE:",
       `quantas vezes nesta semana<br>você respondeu <span style="font-weight:800">a mesma pergunta</span><br>no WhatsApp.`,
-      svg(`${bubble(40, 20, 200, 46, "“Qual o horário?”", { size: 21, rot: -2 })}${bubble(90, 90, 200, 46, "“Qual o horário?”", { side: "right", size: 21, rot: 2, fill: ACC, color: PAPER2 })}${spark(272, 30, 12, OR)}`, 300, 170, 600, 0))}
-    ${finalPhrase(`O RESULTADO<br><span class="or">FALA POR VOCÊ.</span>`, { top: 1064, size: 70 })}
+      svg(`${bubble(40, 26, 200, 46, "“Qual o horário?”", { size: 21, rot: -2 })}${bubble(90, 98, 200, 46, "“Qual o horário?”", { side: "right", size: 21, rot: 2, fill: ACC, color: PAPER2 })}${spark(272, 36, 12, OR)}`, 300, 184, 600, 0))}
+    ${finalPhrase(`O RESULTADO<br><span class="or">FALA POR VOCÊ.</span>`, { top: 1070, size: 70 })}
   `,
 });
 
@@ -249,18 +249,18 @@ const p08 = page({
   kicker: K("ATO 3 · A TESE"),
   body: `
     ${hl(["SEU PERFIL", "APRESENTA.", { t: "O SITE", cls: "or" }, { t: "EXPLICA.", cls: "or" }], { top: 116, size: 126 })}
-    ${txt(`Um site não fecha negócio sozinho.<br>E não garante posição no Google.<br><span style="display:block;height:12px"></span>Mas pode organizar sua apresentação,<br>explicar seus serviços<br>e criar mais um caminho<br>para quem procura sua empresa.`, { top: 640, size: 29, cls: "serifish", left: 120, right: 140 })}
+    ${txt(`Um site não fecha negócio sozinho.<br>E não garante posição no Google.<br><span style="display:block;height:12px"></span>Mas pode organizar sua apresentação,<br>explicar seus serviços<br>e criar mais um caminho<br>para quem procura sua empresa.`, { top: 636, size: 30, cls: "serifish", left: 120, right: 140, style: `font-weight:600;color:${DEEP}` })}
     ${svg(`
       ${shadowRect(40, 96, 850, 200, OR, 6)}
       ${burst(876, 104, 58, 78, 12, PAPER2, 6, 10)}
       ${text(876, 132, "!", 78, { family: "Anton", weight: 400, fill: ACC })}
-      ${text(390, 176, "QUER VER COMO", 62, { family: "Anton", weight: 400, fill: PAPER2, ls: ".01em" })}
-      ${text(390, 238, "FICARIA O SEU?", 62, { family: "Anton", weight: 400, fill: PAPER2, ls: ".01em" })}
-      ${plane(650, 132, 150, -18)}
-      ${emph(690, 200, 105, 135, [150, 170, 190], 5)}
-    `, 960, 330, 60, 822)}
-    ${cta("ME CHAMA NO DIRECT.", { top: 1130, style: `background:${ACC};color:${PAPER2};border-color:${INK};box-shadow:6px 6px 0 ${INK};font-size:30px` })}
-    ${txt("SEU PRÓXIMO LINK PODE SER O SEU SITE.", { top: 1208, size: 22, style: "font-family:Oswald;font-weight:500;letter-spacing:.3em" })}
+      ${text(400, 172, "QUER VER COMO", 68, { family: "Anton", weight: 400, fill: PAPER2, ls: ".01em" })}
+      ${text(400, 242, "FICARIA O SEU?", 68, { family: "Anton", weight: 400, fill: PAPER2, ls: ".01em" })}
+      ${plane(690, 148, 120, -18)}
+      ${emph(720, 202, 85, 108, [150, 170, 190], 5)}
+    `, 960, 330, 60, 800)}
+    ${cta("ME CHAMA NO DIRECT.", { top: 1104, style: `background:${ACC};color:${PAPER2};border-color:${INK};box-shadow:8px 8px 0 ${INK};font-size:40px;font-weight:700;letter-spacing:.14em;padding:12px 46px 14px` })}
+    ${txt("SEU PRÓXIMO LINK PODE SER O SEU SITE.", { top: 1206, size: 22, style: "font-family:Oswald;font-weight:600;letter-spacing:.3em" })}
   `,
 });
 

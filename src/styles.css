@@ -137,6 +137,7 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
   mask-image: linear-gradient(to bottom, transparent 40%, #000 100%);
 }
 .hl .or { color: var(--accent); }
+.hl .or.l::after { background-image: radial-gradient(circle, rgba(17,17,17,.28) 1.4px, transparent 1.9px); }
 .hl .ink { color: var(--ink); -webkit-text-stroke: 0; text-shadow: 8px 8px 0 var(--accent); }
 .hl .ink.l::after { -webkit-mask-image: none; mask-image: none; background: none; }
 
@@ -174,8 +175,8 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
 .cta {
   position: absolute; z-index: 12; left: 50%; transform: translateX(-50%);
   font-family: "Oswald"; font-weight: 600; font-size: 28px; letter-spacing: .2em; text-transform: uppercase;
-  padding: 10px 30px; border: 4px solid var(--accent); background: var(--paper-2); color: var(--accent);
-  box-shadow: 6px 6px 0 var(--accent); white-space: nowrap;
+  padding: 10px 32px; border: 5px solid var(--accent); background: var(--paper-2); color: var(--accent); font-weight: 700;
+  box-shadow: 7px 7px 0 var(--accent); white-space: nowrap;
 }
 
 /* frase final grande, em preto */
@@ -208,8 +209,8 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
 .panel.site .tab { background: var(--accent); color: var(--paper-2); transform: rotate(2deg); left: auto; right: -6px; }
 .panel .art { display: block; width: 100%; }
 .panel .cap {
-  font-family: "Barlow Condensed"; font-weight: 600; font-size: 27px; line-height: 1.12;
-  padding: 0 20px 20px; text-align: center;
+  font-family: "Barlow Condensed"; font-weight: 600; font-size: 29px; line-height: 1.12;
+  padding: 0 18px 20px; text-align: center; color: var(--deep);
 }
 .panel.site .cap { font-weight: 700; }
 .vs {
