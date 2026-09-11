@@ -1,7 +1,7 @@
 # Carrossel — “Instagram ou site?”
 
 Carrossel de 8 páginas para Instagram (1080 × 1350 px, 4:5) com estética de pôster editorial retrô:
-papel envelhecido, preto profundo e laranja queimado, tipografia condensada gigante com contorno e
+papel envelhecido, azul-marinho e azul profundo com detalhes em branco, preto só em contornos e sombras, tipografia condensada gigante com contorno e
 sombra deslocada, halftone e pequenas imperfeições de impressão.
 
 Tese: **Seu perfil apresenta. O site explica.**
@@ -12,7 +12,7 @@ Tese: **Seu perfil apresenta. O site explica.**
 | --- | --- |
 | `output/` | As 8 artes finais em PNG (1080 × 1350) — prontas para publicar |
 | `pages/` | Uma página HTML por card + `index.html` (folha de contato) |
-| `src/styles.css` | Design system: paleta, texturas, moldura, headline, faixa, rodapé, barra de scroll |
+| `src/styles.css` | Design system: paleta (#E9E9E1 · #F7F7F4 · #0B1F3A · #061426 · #111111), texturas, moldura, headline, faixa, rodapé, barra de scroll |
 | `src/lib.mjs` | Biblioteca de ilustração (smartphone, site, lupa, cronômetro, balões, explosões, setas…) |
 | `src/build.mjs` | Conteúdo e composição de cada uma das 8 páginas |
 | `scripts/render.mjs` | Renderiza os HTML em PNG com Chromium (Playwright) |

@@ -2,10 +2,12 @@
 // Biblioteca de ilustração retrô (SVG inline) + componentes de página
 // ============================================================
 
-export const INK = "#141110";
-export const PAPER = "#EBDDBF";
-export const PAPER2 = "#F5EAD2";
-export const OR = "#D65E1E";
+export const INK = "#111111";    // contornos e sombras
+export const PAPER = "#E9E9E1";  // creme / papel envelhecido
+export const PAPER2 = "#F7F7F4"; // branco / off-white
+export const ACC = "#0B1F3A";    // azul-marinho principal
+export const DEEP = "#061426";   // azul profundo
+export const OR = ACC;           // compatibilidade: antigo laranja
 const SW = 7;          // contorno principal
 const SH = 10;         // deslocamento da sombra
 
@@ -39,7 +41,7 @@ export const line = (x1, y1, x2, y2, sw = SW, extra = "") =>
   `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${INK}" stroke-width="${sw}" stroke-linecap="round" ${extra}/>`;
 
 export const text = (x, y, s, size = 24, opts = {}) => {
-  const { fill = INK, anchor = "middle", weight = 700, family = "Oswald", ls = ".04em", rot = 0, italic = false } = opts;
+  const { fill = DEEP, anchor = "middle", weight = 700, family = "Oswald", ls = ".04em", rot = 0, italic = false } = opts;
   const tr = rot ? `transform="rotate(${rot} ${x} ${y})"` : "";
   return `<text x="${x}" y="${y}" font-family="${family}" font-weight="${weight}" font-size="${size}" fill="${fill}" text-anchor="${anchor}" letter-spacing="${ls}" ${italic ? 'font-style="italic"' : ""} ${tr}>${s}</text>`;
 };
@@ -91,7 +93,7 @@ export const arrow = (x, y, len, dir = 0, h = 46, fill = OR, sw = SW) => {
 };
 
 // ---------- placa inclinada ----------
-export const sign = (x, y, label, rot = -6, size = 30, fill = PAPER2, color = INK) => {
+export const sign = (x, y, label, rot = -6, size = 30, fill = PAPER2, color = ACC) => {
   const w = label.length * size * 0.56 + 44;
   const h = size * 1.7;
   return `<g transform="translate(${x},${y}) rotate(${rot})">
@@ -127,7 +129,7 @@ export const phone = (x, y, w, h, opts = {}) => {
   }
   return `<g transform="translate(${x},${y}) rotate(${rot})">
     ${shadow ? `<rect x="${SH}" y="${SH}" width="${w}" height="${h}" rx="${r}" fill="${INK}"/>` : ""}
-    ${rect(0, 0, w, h, INK, r)}
+    ${rect(0, 0, w, h, DEEP, r)}
     ${rect(sx, sy, sw2, sh, PAPER2, 6, 5)}
     <rect x="${w / 2 - w * 0.18}" y="${pad * 0.55}" width="${w * 0.36}" height="${pad * 0.42}" rx="${pad * 0.2}" fill="${PAPER2}"/>
     ${content}
@@ -167,8 +169,8 @@ export const site = (x, y, w, h, opts = {}) => {
   return `<g transform="translate(${x},${y}) rotate(${rot})">
     ${shadow ? `<rect x="${SH}" y="${SH}" width="${w}" height="${h}" rx="8" fill="${INK}"/>` : ""}
     ${rect(0, 0, w, h, PAPER2, 8)}
-    <rect x="0" y="0" width="${w}" height="${bar}" rx="8" fill="${INK}"/>
-    <rect x="0" y="${bar - 10}" width="${w}" height="10" fill="${INK}"/>
+    <rect x="0" y="0" width="${w}" height="${bar}" rx="8" fill="${DEEP}"/>
+    <rect x="0" y="${bar - 10}" width="${w}" height="10" fill="${DEEP}"/>
     ${[0, 1, 2].map(i => `<circle cx="${22 * scale + i * 28 * scale}" cy="${bar / 2}" r="${8 * scale}" fill="${i === 1 ? OR : PAPER2}"/>`).join("")}
     ${rect(14 * scale, bar + 8 * scale, w - 28 * scale, addr - 12 * scale, PAPER2, (addr - 12 * scale) / 2, 4)}
     ${text(w / 2, bar + 8 * scale + (addr - 12 * scale) * 0.7, url, 20 * scale, { family: "Barlow Condensed", weight: 700, ls: ".06em" })}
@@ -178,7 +180,7 @@ export const site = (x, y, w, h, opts = {}) => {
 
 // ---------- balão de conversa ----------
 export const bubble = (x, y, w, h, msg, opts = {}) => {
-  const { side = "left", fill = PAPER2, color = INK, size = 26, rot = 0 } = opts;
+  const { side = "left", fill = PAPER2, color = DEEP, size = 26, rot = 0 } = opts;
   const tail = side === "left"
     ? `<polygon points="${18},${h - 2} ${4},${h + 18} ${44},${h - 2}" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>`
     : `<polygon points="${w - 18},${h - 2} ${w - 4},${h + 18} ${w - 44},${h - 2}" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>`;
@@ -246,8 +248,8 @@ export const addressBar = (x, y, w, h, url, size = 44) => `
   <g transform="translate(${x},${y})">
     ${shadowRect(0, 0, w, h, PAPER2, h / 2)}
     <circle cx="${h / 2 + 6}" cy="${h / 2}" r="${h * 0.24}" fill="${OR}" stroke="${INK}" stroke-width="5"/>
-    <rect x="${h / 2 - 2}" y="${h / 2 - 3}" width="16" height="13" rx="2" fill="${INK}"/>
-    <path d="M ${h / 2 + 2} ${h / 2 - 3} v -6 a 4 4 0 0 1 8 0 v 6" fill="none" stroke="${INK}" stroke-width="3"/>
+    <rect x="${h / 2 - 2}" y="${h / 2 - 3}" width="16" height="13" rx="2" fill="${PAPER2}"/>
+    <path d="M ${h / 2 + 2} ${h / 2 - 3} v -6 a 4 4 0 0 1 8 0 v 6" fill="none" stroke="${PAPER2}" stroke-width="3"/>
     ${text(h + 22, h / 2 + size * 0.36, url, size, { anchor: "start", family: "Barlow Condensed", weight: 800, ls: ".02em" })}
   </g>`;
 

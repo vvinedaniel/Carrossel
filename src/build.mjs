@@ -5,7 +5,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  INK, PAPER, PAPER2, OR, svg, hl, band, txt, finalPhrase, cta, page,
+  INK, PAPER, PAPER2, OR, ACC, DEEP, svg, hl, band, txt, finalPhrase, cta, page,
   rect, shadowRect, circle, line, text, tlines, burst, spark, emph, arrow, sign,
   phone, site, bubble, magnifier, stopwatch, plane, addressBar, searchBox, badge,
 } from "./lib.mjs";
@@ -31,9 +31,9 @@ const p01 = page({
       ${phone(240, 580, 250, 440, { rot: -8 })}
       ${site(555, 610, 330, 390, { rot: 5 })}
       ${sign(205, 590, "CONTEÚDO", -8, 30, PAPER2)}
-      ${sign(870, 596, "ORGANIZAÇÃO", 6, 30, INK, PAPER2)}
+      ${sign(870, 596, "ORGANIZAÇÃO", 6, 30, ACC, PAPER2)}
       ${sign(892, 1030, "BUSCA", -5, 30, PAPER2)}
-      ${sign(230, 1046, "CONTATO", 6, 30, INK, PAPER2)}
+      ${sign(230, 1046, "CONTATO", 6, 30, ACC, PAPER2)}
       ${spark(150, 720, 22)} ${spark(940, 780, 18)} ${spark(560, 560, 16, OR)} ${spark(120, 900, 12)}
     `)}
     ${txt("SEU PERFIL APRESENTA.<br>O SITE EXPLICA.", { top: 1100, size: 34, style: "font-weight:700;letter-spacing:.06em" })}
@@ -55,9 +55,9 @@ const p02 = page({
       ${emph(470, 810, 280, 335, [195, 210, 225], 6)}
       ${phone(335, 592, 275, 440, { rot: -4 })}
       ${sign(172, 632, "PUBLICAÇÕES", -8, 28, PAPER2)}
-      ${sign(150, 748, "PORTFÓLIO", 5, 28, INK, PAPER2)}
+      ${sign(150, 748, "PORTFÓLIO", 5, 28, ACC, PAPER2)}
       ${sign(178, 866, "BASTIDORES", -6, 28, PAPER2)}
-      ${sign(790, 626, "CONTEÚDO", 7, 28, INK, PAPER2)}
+      ${sign(790, 626, "CONTEÚDO", 7, 28, ACC, PAPER2)}
       ${sign(822, 722, "INTERAÇÃO", -6, 28, PAPER2)}
       ${site(690, 782, 250, 225, { rot: 6, scale: 0.72, url: "seusite.com.br" })}
       ${spark(690, 600, 16, OR)} ${spark(140, 960, 16)} ${spark(965, 890, 14)}
@@ -100,7 +100,7 @@ const p03 = compare({
   bandText: "TENHA UM ENDEREÇO PRÓPRIO PARA SUA MARCA",
   hoje: `
     ${phone(122, 18, 172, 296, { rot: -4 })}
-    ${sign(330, 262, "PERFIL", -8, 26, INK, PAPER2)}
+    ${sign(330, 262, "PERFIL", -8, 26, ACC, PAPER2)}
     ${spark(70, 60, 14)} ${spark(370, 70, 12, OR)}
   `,
   comSite: `
@@ -192,9 +192,9 @@ const p06 = compare({
   bandText: "PARE DE EXPLICAR TUDO DO ZERO.",
   hoje: `
     ${bubble(22, 34, 270, 50, "“Qual o horário?”", { side: "left", size: 24, rot: -1 })}
-    ${bubble(120, 104, 280, 50, "“Onde vocês atendem?”", { side: "right", size: 24, rot: 1, fill: INK, color: PAPER2 })}
+    ${bubble(120, 104, 280, 50, "“Onde vocês atendem?”", { side: "right", size: 24, rot: 1, fill: ACC, color: PAPER2 })}
     ${bubble(22, 174, 290, 50, "“Quais serviços fazem?”", { side: "left", size: 24, rot: -1 })}
-    ${bubble(140, 244, 258, 50, "“Como funciona?”", { side: "right", size: 24, rot: 1, fill: INK, color: PAPER2 })}
+    ${bubble(140, 244, 258, 50, "“Como funciona?”", { side: "right", size: 24, rot: 1, fill: ACC, color: PAPER2 })}
   `,
   comSite: `
     ${addressBar(30, 14, 360, 54, "suaempresa.com.br", 26)}
@@ -228,14 +228,14 @@ const p07 = page({
     <div style="position:absolute;left:84px;right:96px;top:684px;height:3px;background:${INK};z-index:9"></div>
     <div style="position:absolute;left:84px;right:96px;top:874px;height:3px;background:${INK};z-index:9"></div>
     ${testRow(500, "1", "PESQUISE:",
-      `<span class="hi" style="font-weight:800;font-size:29px;padding:0 8px;background:${INK};color:${PAPER2}">seu serviço + sua cidade</span><br><span style="display:inline-block;margin-top:6px">É fácil encontrar e entender sua empresa?</span>`,
+      `<span class="hi" style="font-weight:800;font-size:29px;padding:0 8px;background:${ACC};color:${PAPER2}">seu serviço + sua cidade</span><br><span style="display:inline-block;margin-top:6px">É fácil encontrar e entender sua empresa?</span>`,
       svg(`${searchBox(14, 50, 258, 58, "serviço + cidade", 23)}${spark(286, 40, 12, OR)}${spark(24, 128, 9)}`, 300, 170, 600, 0))}
     ${testRow(690, "2", "PEÇA PARA ALGUÉM ENCONTRAR:",
       `sua região · seu horário · seus serviços<br><span style="font-weight:800;font-size:30px;letter-spacing:.04em;display:inline-block;margin-top:6px">EM 30 SEGUNDOS.</span>`,
       svg(stopwatch(190, 96, 62, { fraction: 0.5, label: "30s" }), 300, 170, 600, 0))}
     ${testRow(880, "3", "CONTE:",
       `quantas vezes nesta semana<br>você respondeu <span style="font-weight:800">a mesma pergunta</span><br>no WhatsApp.`,
-      svg(`${bubble(40, 20, 200, 46, "“Qual o horário?”", { size: 21, rot: -2 })}${bubble(90, 90, 200, 46, "“Qual o horário?”", { side: "right", size: 21, rot: 2, fill: INK, color: PAPER2 })}${spark(272, 30, 12, OR)}`, 300, 170, 600, 0))}
+      svg(`${bubble(40, 20, 200, 46, "“Qual o horário?”", { size: 21, rot: -2 })}${bubble(90, 90, 200, 46, "“Qual o horário?”", { side: "right", size: 21, rot: 2, fill: ACC, color: PAPER2 })}${spark(272, 30, 12, OR)}`, 300, 170, 600, 0))}
     ${finalPhrase(`O RESULTADO<br><span class="or">FALA POR VOCÊ.</span>`, { top: 1064, size: 70 })}
   `,
 });
@@ -251,14 +251,14 @@ const p08 = page({
     ${txt(`Um site não fecha negócio sozinho.<br>E não garante posição no Google.<br><span style="display:block;height:12px"></span>Mas pode organizar sua apresentação,<br>explicar seus serviços<br>e criar mais um caminho<br>para quem procura sua empresa.`, { top: 640, size: 29, cls: "serifish", left: 120, right: 140 })}
     ${svg(`
       ${shadowRect(40, 96, 850, 200, OR, 6)}
-      ${burst(876, 104, 58, 78, 12, OR, 6, 10)}
-      ${text(876, 132, "!", 78, { family: "Anton", weight: 400, fill: PAPER2 })}
+      ${burst(876, 104, 58, 78, 12, PAPER2, 6, 10)}
+      ${text(876, 132, "!", 78, { family: "Anton", weight: 400, fill: ACC })}
       ${text(390, 176, "QUER VER COMO", 62, { family: "Anton", weight: 400, fill: PAPER2, ls: ".01em" })}
       ${text(390, 238, "FICARIA O SEU?", 62, { family: "Anton", weight: 400, fill: PAPER2, ls: ".01em" })}
       ${plane(650, 132, 150, -18)}
       ${emph(690, 200, 105, 135, [150, 170, 190], 5)}
     `, 960, 330, 60, 822)}
-    ${cta("ME CHAMA NO DIRECT.", { top: 1130, style: `background:${INK};color:${PAPER2};box-shadow:6px 6px 0 ${OR};font-size:30px` })}
+    ${cta("ME CHAMA NO DIRECT.", { top: 1130, style: `background:${ACC};color:${PAPER2};border-color:${INK};box-shadow:6px 6px 0 ${INK};font-size:30px` })}
     ${txt("SEU PRÓXIMO LINK PODE SER O SEU SITE.", { top: 1208, size: 22, style: "font-family:Oswald;font-weight:500;letter-spacing:.3em" })}
   `,
 });
