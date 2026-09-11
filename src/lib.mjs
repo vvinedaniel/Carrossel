@@ -5,8 +5,8 @@
 export const INK = "#111111";    // contornos e sombras
 export const PAPER = "#E9E9E1";  // creme / papel envelhecido
 export const PAPER2 = "#F7F7F4"; // branco / off-white
-export const ACC = "#0B1F3A";    // azul-marinho principal
-export const DEEP = "#061426";   // azul profundo
+export const ACC = "#163B66";    // azul-marinho principal (grandes preenchimentos)
+export const DEEP = "#0B1F3A";   // azul profundo (áreas secundárias)
 export const OR = ACC;           // compatibilidade: antigo laranja
 const SW = 7;          // contorno principal
 const SH = 10;         // deslocamento da sombra
@@ -113,10 +113,10 @@ export const phone = (x, y, w, h, opts = {}) => {
     content += circle(sx + sw2 * 0.18, sy + sw2 * 0.2, sw2 * 0.11, OR, 5);
     content += tlines(sx + sw2 * 0.36, sy + sw2 * 0.13, sw2 * 0.55, 3, sw2 * 0.075, 6, INK, [1, 0.7, 0.5]);
     // barra de destaques
-    for (let i = 0; i < 4; i++) content += circle(sx + sw2 * (0.12 + i * 0.25), sy + sw2 * 0.46, sw2 * 0.075, i % 2 ? PAPER2 : OR, 4);
+    for (let i = 0; i < 4; i++) content += circle(sx + sw2 * (0.12 + i * 0.25), sy + sw2 * 0.46, sw2 * 0.075, i === 0 ? OR : PAPER2, 4);
     // grade de posts
     const gy = sy + sw2 * 0.62, cell = (sw2 - 12) / 3;
-    const fills = [OR, "url(#ht)", PAPER2, PAPER2, OR, "url(#ht)", "url(#ht)", PAPER2, OR, PAPER2, "url(#ht)", OR];
+    const fills = [OR, PAPER2, "url(#ht)", PAPER2, OR, PAPER2, PAPER2, "url(#ht)", OR, PAPER2, PAPER2, OR];
     let k = 0;
     for (let row = 0; row < 4; row++) for (let col = 0; col < 3; col++) {
       const cy = gy + row * (cell + 6);
@@ -160,7 +160,8 @@ export const site = (x, y, w, h, opts = {}) => {
   } else {
     // blocos de conteúdo genéricos
     const cw = (w - 44 * scale) / 2;
-    content += rect(16 * scale, cy, cw, 70 * scale, "url(#ht)", 3, 5);
+    content += rect(16 * scale, cy, cw, 70 * scale, PAPER2, 3, 5);
+    content += `<rect x="${16 * scale + 3}" y="${cy + 3}" width="${cw - 6}" height="${70 * scale - 6}" fill="url(#ht)" opacity=".35"/>`;
     content += rect(28 * scale + cw, cy, cw, 70 * scale, PAPER2, 3, 5);
     content += tlines(30 * scale + cw + 12 * scale, cy + 20 * scale, cw - 24 * scale, 3, 18 * scale, 6 * scale, INK, [1, 0.8, 0.5]);
     cy += 88 * scale;

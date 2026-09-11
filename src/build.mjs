@@ -122,7 +122,8 @@ const feedCards = () => {
     const x = 40 + i * 14, y = 14 + i * 76;
     s += shadowRect(x, y, 300, 66, i % 2 ? "url(#ht)" : PAPER2, 4, 5, 7, 7);
     if (i % 2) s += `<rect x="${x + 3}" y="${y + 3}" width="294" height="60" fill="${PAPER2}"/><rect x="${x + 3}" y="${y + 3}" width="294" height="60" fill="url(#ht)" opacity=".3"/>`;
-    s += rect(x + 12, y + 12, 42, 42, i % 3 === 0 ? OR : "url(#htd)", 3, 4);
+    s += rect(x + 12, y + 12, 42, 42, i % 3 === 0 ? OR : PAPER2, 3, 4);
+    if (i % 3) s += `<rect x="${x + 15}" y="${y + 15}" width="36" height="36" fill="url(#ht)" opacity=".4"/>`;
     s += tlines(x + 68, y + 24, 110, 2, 20, 6, INK, [1, 0.65]);
     s += text(x + 288, y + 42, labels[i], 16, { anchor: "end", ls: ".1em" });
   }

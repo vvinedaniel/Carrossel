@@ -16,8 +16,8 @@
   --paper: #E9E9E1;     /* creme / papel envelhecido */
   --paper-2: #F7F7F4;   /* branco / off-white */
   --ink: #111111;       /* contornos e sombras */
-  --accent: #0B1F3A;    /* azul-marinho principal */
-  --deep: #061426;      /* azul profundo */
+  --accent: #163B66;    /* azul-marinho principal (grandes preenchimentos, headlines) */
+  --deep: #0B1F3A;      /* azul profundo (áreas secundárias, texto corrido) */
   --w: 1080px;
   --h: 1350px;
   --stroke: 7px;
@@ -44,7 +44,7 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
   position: absolute; inset: 0; z-index: 0;
   background:
     radial-gradient(ellipse at 50% 40%, rgba(255,255,252,.35) 0%, rgba(255,255,252,0) 55%),
-    radial-gradient(ellipse at 50% 50%, rgba(6,20,38,0) 60%, rgba(6,20,38,.20) 100%);
+    radial-gradient(ellipse at 50% 50%, rgba(11,31,58,0) 60%, rgba(11,31,58,.18) 100%);
   pointer-events: none;
 }
 .grain {
@@ -64,7 +64,7 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
   background-image:
     radial-gradient(circle, rgba(20,17,16,.55) 1.5px, transparent 2px),
     radial-gradient(circle, rgba(20,17,16,.35) 1px, transparent 1.6px),
-    radial-gradient(circle, rgba(11,31,58,.45) 1.4px, transparent 1.9px);
+    radial-gradient(circle, rgba(22,59,102,.5) 1.4px, transparent 1.9px);
   background-size: 287px 331px, 197px 251px, 421px 389px;
   background-position: 13px 47px, 91px 7px, 200px 300px;
 }
