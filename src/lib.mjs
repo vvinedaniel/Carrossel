@@ -153,7 +153,7 @@ export const site = (x, y, w, h, opts = {}) => {
     sections.forEach((s, i) => {
       const yy = cy + i * (ch + gap);
       content += rect(16 * scale, yy, w - 32 * scale, ch, i % 2 ? ACC : PAPER2, 3, 5);
-      content += text(w / 2, yy + ch / 2 + 12 * scale, s, 32 * scale, { ls: ".12em", fill: i % 2 ? PAPER2 : ACC });
+      content += text(w / 2, yy + ch / 2 + 12 * scale, s, 34 * scale, { ls: ".1em", fill: i % 2 ? PAPER2 : ACC });
     });
   } else {
     // blocos de conteúdo genéricos

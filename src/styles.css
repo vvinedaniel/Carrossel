@@ -175,8 +175,8 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
 .cta {
   position: absolute; z-index: 12; left: 50%; transform: translateX(-50%);
   font-family: "Oswald"; font-weight: 600; font-size: 28px; letter-spacing: .2em; text-transform: uppercase;
-  padding: 10px 32px; border: 5px solid var(--accent); background: var(--paper-2); color: var(--accent); font-weight: 700;
-  box-shadow: 7px 7px 0 var(--accent); white-space: nowrap;
+  padding: 10px 34px; border: 6px solid var(--accent); background: var(--paper-2); color: var(--accent); font-weight: 700;
+  box-shadow: 8px 8px 0 var(--accent); white-space: nowrap;
 }
 
 /* frase final grande, em preto */
@@ -209,8 +209,8 @@ body { width: var(--w); height: var(--h); overflow: hidden; }
 .panel.site .tab { background: var(--accent); color: var(--paper-2); transform: rotate(2deg); left: auto; right: -6px; }
 .panel .art { display: block; width: 100%; }
 .panel .cap {
-  font-family: "Barlow Condensed"; font-weight: 600; font-size: 29px; line-height: 1.12;
-  padding: 0 18px 20px; text-align: center; color: var(--deep);
+  font-family: "Barlow Condensed"; font-weight: 600; font-size: 30px; line-height: 1.12;
+  padding: 0 16px 20px; text-align: center; color: var(--deep);
 }
 .panel.site .cap { font-weight: 700; }
 .vs {
