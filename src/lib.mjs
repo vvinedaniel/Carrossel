@@ -306,11 +306,11 @@ export const scrollbar = (i, n = 8) => {
   return `<div class="scroll"><div class="thumb" style="top:${y}px"></div></div>`;
 };
 
-export const page = ({ n, kicker, body }) => `<!DOCTYPE html>
+export const page = ({ n, kicker, body, total = 8, slug = null }) => `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Página ${String(n).padStart(2, "0")} — Instagram ou site?</title>
+<title>Página ${String(n).padStart(2, "0")}</title>
 <link rel="stylesheet" href="../src/styles.css">
 </head>
 <body>
@@ -318,8 +318,8 @@ export const page = ({ n, kicker, body }) => `<!DOCTYPE html>
   <div class="kicker">${kicker}</div>
   ${body}
   <div class="frame"></div>
-  ${scrollbar(n - 1)}
-  <div class="footer"><span>@viniciusdaniel.web</span><span class="num">${String(n).padStart(2, "0")}/08</span></div>
+  ${scrollbar(n - 1, total)}
+  <div class="footer"><span>@viniciusdaniel.web</span><span class="num">${String(n).padStart(2, "0")}/${String(total).padStart(2, "0")}</span></div>
   <div class="specks"></div>
   <div class="halftone"></div>
   <div class="grain"></div>

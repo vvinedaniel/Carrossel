@@ -10,7 +10,7 @@ const OUT = join(ROOT, "output");
 mkdirSync(OUT, { recursive: true });
 
 const only = process.argv.slice(2); // ex.: node scripts/render.mjs 01 03
-const files = readdirSync(PAGES).filter(f => /^\d\d\.html$/.test(f)).filter(f => !only.length || only.includes(f.slice(0, 2))).sort();
+const files = readdirSync(PAGES).filter(f => f.endsWith(".html") && !f.startsWith("index")).filter(f => !only.length || only.some(o => f.startsWith(o))).sort();
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 1 });

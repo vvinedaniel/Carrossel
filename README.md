@@ -32,6 +32,21 @@ Tese: **Seu perfil apresenta. O site explica.**
 Detalhe escondido: a barra vertical à direita é a barra de rolagem de um site. Ela desce a cada
 página — o carrossel é um site sendo rolado.
 
+## Segundo criativo — "As 4 perguntas que você responde todo dia"
+
+Seis quadros (`output/link-01.png` … `link-06.png`) sobre o loop de responder sempre
+as mesmas perguntas no WhatsApp, agora com figuras humanas em traço de quadrinho
+vintage. Mesma paleta, mesmos contornos, mesmo rodapé e mesma barra de rolagem.
+
+| Arquivo | Conteúdo |
+| --- | --- |
+| `src/figures.mjs` | Personagens: cabeças, cabelos, expressões, poses (digitando, mãos pra cima, celular erguido, apontando) |
+| `src/build-link.mjs` | Os 6 quadros |
+
+```bash
+node src/build-link.mjs && node scripts/render.mjs link
+```
+
 ## Como regenerar
 
 ```bash
