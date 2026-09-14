@@ -80,21 +80,20 @@ const f03 = page({
   n: 3, total: T,
   kicker: K("O LOOP · PERGUNTAS 2, 3 E 4"),
   body: `
-    ${hl(["AÍ VÊM", "AS OUTRAS", { t: "TRÊS.", cls: "or" }], { top: 120, size: 116 })}
-    ${band("ONDE ATENDEM? QUAIS SERVIÇOS? COMO FUNCIONA?", { top: 490, size: 29 })}
+    ${hl(["AÍ VÊM", "AS OUTRAS", { t: "TRÊS.", cls: "or" }], { top: 122, size: 114 })}
+    ${band("E NUNCA VÊM SOZINHAS.", { top: 492 })}
     ${svg(`
-      ${stress(540, 862, 196, 254, [200, 216, 232, 308, 324, 340], 7)}
-      ${person(540, 856, 1.1, { hair: "swoop", mood: "worried", pose: "handsUp", drops: 3 })}
-      ${person(112, 726, 0.5, { hair: "curly", mood: "annoyed", bust: false })}
-      ${person(966, 722, 0.5, { hair: "bun", mood: "worried", bust: false })}
-      ${person(104, 1042, 0.5, { hair: "cap", mood: "annoyed", bust: false })}
-      ${person(972, 1046, 0.5, { hair: "long", mood: "worried", bust: false })}
-      ${bubble(168, 640, 234, 54, "“Onde atendem?”", { size: 24, rot: -5, fill: ACC, color: PAPER2 })}
-      ${bubble(680, 636, 238, 54, "“Quais serviços?”", { side: "right", size: 24, rot: 5 })}
-      ${bubble(160, 1064, 242, 54, "“Como funciona?”", { size: 24, rot: 4 })}
-      ${bubble(676, 1068, 240, 54, "“Qual o horário?”", { side: "right", size: 24, rot: -4, fill: ACC, color: PAPER2 })}
+      ${stress(540, 880, 200, 258, [206, 228, 312, 334], 7)}
+      ${person(540, 876, 1.14, { hair: "swoop", mood: "worried", pose: "handsUp", drops: 2 })}
+      ${person(120, 706, 0.52, { hair: "curly", mood: "annoyed", bust: false })}
+      ${person(960, 702, 0.52, { hair: "bun", mood: "worried", bust: false })}
+      ${person(952, 1054, 0.52, { hair: "cap", mood: "annoyed", bust: false })}
+      ${bubble(178, 624, 244, 56, "“Onde atendem?”", { size: 25, rot: -4, fill: ACC, color: PAPER2 })}
+      ${bubble(664, 620, 250, 56, "“Quais serviços?”", { side: "right", size: 25, rot: 4 })}
+      ${bubble(688, 972, 250, 56, "“Como funciona?”", { side: "right", size: 25, rot: -3, fill: ACC, color: PAPER2 })}
+      ${spark(146, 1074, 17)} ${spark(112, 902, 13, ACC)}
     `)}
-    ${txt("Cada conversa começa do zero.", { top: 1182, size: 34, cls: "serifish", style: "font-weight:600" })}
+    ${txt("Cada conversa começa do zero.", { top: 1176, size: 34, cls: "serifish", style: "font-weight:600" })}
   `,
 });
 
