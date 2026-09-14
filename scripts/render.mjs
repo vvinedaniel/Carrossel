@@ -9,17 +9,21 @@ const PAGES = join(ROOT, "pages");
 const OUT = join(ROOT, "output");
 mkdirSync(OUT, { recursive: true });
 
-const only = process.argv.slice(2); // ex.: node scripts/render.mjs 01 03
+const argv = process.argv.slice(2);
+const hi = argv.includes("2x");          // node scripts/render.mjs link 2x
+const only = argv.filter(a => a !== "2x"); // ex.: node scripts/render.mjs 01 03
 const files = readdirSync(PAGES).filter(f => f.endsWith(".html") && !f.startsWith("index")).filter(f => !only.length || only.some(o => f.startsWith(o))).sort();
 
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 1 });
+const ctx = await browser.newContext({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: hi ? 2 : 1 });
+const DIR = hi ? join(OUT, "2x") : OUT;
+mkdirSync(DIR, { recursive: true });
 const pg = await ctx.newPage();
 for (const f of files) {
   await pg.goto(pathToFileURL(join(PAGES, f)).href);
   await pg.evaluate(() => document.fonts.ready);
   await pg.waitForTimeout(150);
-  const out = join(OUT, f.replace(".html", ".png"));
+  const out = join(DIR, f.replace(".html", ".png"));
   await pg.screenshot({ path: out, clip: { x: 0, y: 0, width: 1080, height: 1350 }, type: "png" });
   console.log("ok", out);
 }
